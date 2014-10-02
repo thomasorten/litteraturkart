@@ -39,3 +39,9 @@
 }
 
 .angular-google-map-container { height: 400px; }
+
+.container {
+    background: #000;
+    padding-left: 0;
+    color: #fff;
+}
