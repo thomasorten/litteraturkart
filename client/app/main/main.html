@@ -1,26 +1,26 @@
+<div class="map">
+  <google-map center="map.center" zoom="map.zoom" events="map.events" options="map.options"></google-map>
+</div>
 <div class="container">
   <div class="row">
-    <div class="col-lg-8">
-      <div class="map">
-        <google-map center="map.center" zoom="map.zoom" events="map.events" options="map.options"></google-map>
-      </div>
-    </div>
-    <div class="col-lg-4">
-      <h1 class="page-header">Lyktestolper i Rana</h1>
-      <p>Hvor er det dårlig belyste gater i Rana? Hjelp oss å finne de ved å markere på kartet til venstre, og sende inn skjemaet nedenfor.</p>
-      <form role="form" method="POST" ng-submit="addLight()">
-        <div class="form-group">
-          <label for="name">Ditt navn</label>
-          <input type="text" class="form-control" id="name" name="name" ng-model="name">
-        </div>
-        <div class="form-group">
-          <label for="description">Beskriv området</label>
-          <textarea class="form-control" rows="3" id="description" name="description" ng-model="description"></textarea>
-        </div>
-        <button type="submit" class="btn btn-default">Send inn</button>
-      </form>
-      <div class="alert alert-danger" role="alert">Du må velge et punkt og fylle inn alle feltene.</div>
-      <div class="alert alert-success" role="alert">Takk for tipset!</div>
+    <div class="col-lg-6 col-lg-offset-6 col-xs-11 col-xs-offset-1 info">
+      <div>
+        <h1 class="page-header">Hvor er det dårlig gatebelysning i Rana?</h1>
+        <p>Hvor er det dårlig belyste gater i Rana? Hjelp oss å finne de ved å markere på kartet til venstre, og sende inn skjemaet nedenfor.</p>
+        <form role="form" method="POST" ng-submit="addLight()">
+          <div class="form-group">
+            <label for="name">Ditt navn</label>
+            <input type="text" class="form-control" id="name" name="name" ng-model="name">
+          </div>
+          <div class="form-group">
+            <label for="description">Beskriv området</label>
+            <textarea class="form-control" rows="3" id="description" name="description" ng-model="description"></textarea>
+          </div>
+          <button type="submit" class="btn btn-default">Send inn</button>
+        </form>
+        <div class="alert alert-danger" role="alert">Du må velge et punkt og fylle inn alle feltene.</div>
+        <div class="alert alert-success" role="alert">Takk for tipset!</div>
+      </div>      
     </div>
   </div>
 </div>

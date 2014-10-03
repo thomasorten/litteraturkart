@@ -55,7 +55,7 @@ angular.module('trafikklysApp')
               position: new google.maps.LatLng($scope.loadedLights[i].lat, $scope.loadedLights[i].lon),
               map: $scope.googleMap,
               title: $scope.loadedLights[i].name,
-              icon: '/assets/images/bulb.png'
+              icon: '/assets/images/bulb_yellow.png'
             }); 
 
             bindWindow(marker, i);  
@@ -64,10 +64,12 @@ angular.module('trafikklysApp')
         });
     }
 
+    $scope.coords = $(window).width() > 767 ? { lat: 66.315000, lon: 14.298423 } : { lat: 66.312383, lon: 14.147785 };
+
     $scope.map = {
-        center: {
-            latitude: 66.313968,
-            longitude: 14.143264
+        center: {  
+            latitude: $scope.coords.lat,
+            longitude: $scope.coords.lon
         },
         zoom: 12,
           events: {
