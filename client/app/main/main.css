@@ -78,6 +78,14 @@ body > div, .row, .info {
     border: 0;
 }
 
+input[type="text"] {
+    padding: 25px 10px 25px 10px;
+}
+
+textarea.form-control {
+    padding: 12px 10px 12px 10px;
+}
+
 textarea.form-control {
     min-height: 150px;
 }
