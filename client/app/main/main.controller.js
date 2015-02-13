@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('trafikklysApp')
+angular.module('litteraturkartApp')
   .controller('MainCtrl', function ($scope, $http, $timeout, $compile) {
 
     $scope.markersArray = [],
@@ -14,7 +14,7 @@ angular.module('trafikklysApp')
         var marker = new google.maps.Marker({
             position: location, 
             map: $scope.googleMap,
-            icon: '/assets/images/bulb.png'
+            icon: '/assets/images/place_unselected.png'
         });
 
         // add marker in markers array
@@ -34,8 +34,8 @@ angular.module('trafikklysApp')
     }
 
     function bindWindow(marker, index) {
-        var contentString = '<div class="bodyContent">'+ $scope.loadedLights[index].info +'</div>' + 
-                            '<br/><p>Sendt inn av <strong>'+ $scope.loadedLights[index].name +'</strong></p>';
+        var contentString = '<div class="bodyContent">'+ $scope.loadedPlaces[index].info +'</div>' + 
+                            '<br/><p>Sendt inn av <strong>'+ $scope.loadedPlaces[index].name +'</strong></p>';
 
         var infowindow = new google.maps.InfoWindow({
             content: contentString
@@ -47,15 +47,15 @@ angular.module('trafikklysApp')
     }
 
     function loadMarkers() {
-       $http.get('/api/lights').success(function(lights) {
-          $scope.loadedLights = lights; 
-          for (var i = 0; i < lights.length; i++) {  
+       $http.get('/api/places').success(function(places) {
+          $scope.loadedPlaces = places; 
+          for (var i = 0; i < places.length; i++) {  
 
             var marker = new google.maps.Marker({
-              position: new google.maps.LatLng($scope.loadedLights[i].lat, $scope.loadedLights[i].lon),
+              position: new google.maps.LatLng($scope.loadedPlaces[i].lat, $scope.loadedPlaces[i].lon),
               map: $scope.googleMap,
-              title: $scope.loadedLights[i].name,
-              icon: '/assets/images/bulb_yellow.png'
+              title: $scope.loadedPlaces[i].name,
+              icon: '/assets/images/place.png'
             }); 
 
             bindWindow(marker, i);  
@@ -63,15 +63,15 @@ angular.module('trafikklysApp')
           };
         });
     }
-
-    $scope.coords = $(window).width() > 767 ? { lat: 66.315000, lon: 14.298423 } : { lat: 66.312383, lon: 14.147785 };
+ 
+    $scope.coords = $(window).width() > 767 ? { lat: 59.918171, lon: 10.835288 } : { lat: 59.924462, lon: 10.747094 };
 
     $scope.map = {
         center: {  
             latitude: $scope.coords.lat,
             longitude: $scope.coords.lon
         },
-        zoom: 12,
+        zoom:  $(window).width() > 991 ? 13 : 12,
           events: {
             tilesloaded: function (map) {
               $scope.$apply(function () {
@@ -92,11 +92,11 @@ angular.module('trafikklysApp')
           }
         },
         options: {
-          styles: [{"featureType":"water","stylers":[{"color":"#021019"}]},{"featureType":"landscape","stylers":[{"color":"#08304b"}]},{"featureType":"poi","elementType":"geometry","stylers":[{"color":"#0c4152"},{"lightness":5}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#000000"}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"color":"#0b434f"},{"lightness":25}]},{"featureType":"road.arterial","elementType":"geometry.fill","stylers":[{"color":"#000000"}]},{"featureType":"road.arterial","elementType":"geometry.stroke","stylers":[{"color":"#0b3d51"},{"lightness":16}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#000000"}]},{"elementType":"labels.text.fill","stylers":[{"color":"#ffffff"}]},{"elementType":"labels.text.stroke","stylers":[{"color":"#000000"},{"lightness":13}]},{"featureType":"transit","stylers":[{"color":"#146474"}]},{"featureType":"administrative","elementType":"geometry.fill","stylers":[{"color":"#000000"}]},{"featureType":"administrative","elementType":"geometry.stroke","stylers":[{"color":"#144b53"},{"lightness":14},{"weight":1.4}]}]
+          styles: [{"featureType":"administrative.province","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"administrative.locality","elementType":"labels.text","stylers":[{"lightness":"-50"},{"visibility":"simplified"}]},{"featureType":"landscape","elementType":"all","stylers":[{"saturation":-100},{"lightness":65},{"visibility":"on"}]},{"featureType":"landscape","elementType":"geometry.fill","stylers":[{"visibility":"on"},{"saturation":"0"},{"hue":"#ff0000"}]},{"featureType":"landscape","elementType":"labels.icon","stylers":[{"visibility":"simplified"}]},{"featureType":"poi","elementType":"all","stylers":[{"saturation":-100},{"lightness":51},{"visibility":"off"}]},{"featureType":"poi.government","elementType":"all","stylers":[{"visibility":"simplified"}]},{"featureType":"poi.medical","elementType":"all","stylers":[{"visibility":"simplified"}]},{"featureType":"road","elementType":"all","stylers":[{"saturation":"-100"},{"lightness":"0"}]},{"featureType":"road","elementType":"labels.text","stylers":[{"lightness":"0"}]},{"featureType":"road","elementType":"labels.icon","stylers":[{"lightness":"50"}]},{"featureType":"road.highway","elementType":"all","stylers":[{"visibility":"simplified"}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#95969a"}]},{"featureType":"road.highway","elementType":"labels","stylers":[{"lightness":"0"}]},{"featureType":"road.highway","elementType":"labels.icon","stylers":[{"visibility":"on"},{"lightness":"0"}]},{"featureType":"road.highway.controlled_access","elementType":"geometry.fill","stylers":[{"color":"#3c3c31"}]},{"featureType":"road.highway.controlled_access","elementType":"labels","stylers":[{"lightness":"0"}]},{"featureType":"road.highway.controlled_access","elementType":"labels.icon","stylers":[{"lightness":"-10"},{"saturation":"0"}]},{"featureType":"road.local","elementType":"all","stylers":[{"visibility":"on"},{"lightness":"41"},{"saturation":"0"}]},{"featureType":"transit","elementType":"all","stylers":[{"saturation":-100},{"visibility":"simplified"}]},{"featureType":"transit.line","elementType":"geometry.fill","stylers":[{"lightness":"0"}]},{"featureType":"transit.station.bus","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"water","elementType":"geometry","stylers":[{"color":"#dce6e6"}]},{"featureType":"water","elementType":"labels","stylers":[{"visibility":"on"},{"lightness":-25},{"saturation":-100}]},{"featureType":"water","elementType":"labels.text","stylers":[{"lightness":"50"}]}]
         }
     };
 
-    $scope.addLight = function() {
+    $scope.submit = function() {
       if(!$scope.name || !$scope.description || !$scope.lat || !$scope.lon) {
         $('.alert-danger').fadeIn();
         $timeout(function() {      
@@ -104,7 +104,7 @@ angular.module('trafikklysApp')
         }, 3000);
         return;
       }
-      $http.post('/api/lights', { 
+      $http.post('/api/places', { 
         name: $scope.name,
         info: $scope.description, 
         lat: $scope.lat,

@@ -1,42 +1,53 @@
-.thing-form {
-    margin: 20px 0;
+/* Generelle stiler */
+
+body, html {
+    height: 100%;
 }
 
-#banner {
-    border-bottom: none;
-    margin-top: -20px;
+body > div, .row, .info {
+    height: 100%;
 }
 
-#banner h1 {
-    font-size: 60px;
-    line-height: 1;
-    letter-spacing: -1px;
+p {
+    font-size: 16px;
 }
 
-.hero-unit {
-    position: relative;
-    padding: 30px 15px;
-    color: #F5F5F5;
-    text-align: center;
-    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
-    background: #4393B9;
-}
-
-.footer {
-    text-align: center;
-    padding: 30px 0;
-    margin-top: 70px;
-    border-top: 1px solid #E5E5E5;
-}
-
-.alert {
-    margin-top: 20px;
-    display: none;
+.info p {
+    margin: 0 0 20px;
+    font-size: 1.3em;
+    line-height: 1.5em;
+    border-top: 1px solid #DBDBDB;
+    border-bottom: 1px solid #DBDBDB;
+    padding: 20px;
+    background: #F0F0F0;
+    font-style: italic;
+    color: #666;
 }
 
 .bodyContent {
-    font-size: 17px;
+    font-size: 25px;
+    padding: 20px 0 10px 0;
 }
+
+.page-header {
+    margin-top: 0;
+    font-size: 20px;
+    line-height: 1.3em;
+    padding: 10px 0 10px 0;
+    color: #5E5E5E;
+    border: 0;
+    margin: 0 0 20px 0;
+    text-align: center;
+}
+
+.page-header span {
+    font-family: 'Gentium Book Basic', serif;
+    font-size: 3.3em;
+    line-height: 1.1em;
+    color: #DF6047;
+}
+
+/* Kart */
 
 .row {
     position: relative;
@@ -50,32 +61,46 @@
 }
 
 .container {
-    background: #000;
     padding-left: 0;
     height: 100%;
     pointer-events: none;
 }
 
 .info {
-    color: #fff;
+    color: #1D1D1D;
     margin-bottom: 0;
     margin-top: 0;
-    padding-right: 50px;
+    padding-right: 0;
     pointer-events: auto;
-
     display: flex;
     align-items: center;
 }
 
-body > div, .row, .info {
-    height: 100%;
+.info > div {
+    background: rgba(255,255,255, 0.6);
+    padding: 40px;
+    border-radius: 20px;
+}
+
+/* Skjema */
+
+.btn {
+    padding: 10px 30px 10px 30px;
+    background: #DF6047;
+    color: #fff;
+    font-size: 18px;
+    border: 0;
+}
+
+.alert {
+    margin-top: 20px;
+    display: none;
 }
 
 .form-control {
-    background: rgba(255,255,255,0.5);
     color: #000;
     font-size: 20px;
-    border: 0;
+    border: 1px solid #C3C3C3;
 }
 
 input[type="text"] {
@@ -91,50 +116,61 @@ textarea.form-control {
 }
 
 label {
-    font-size: 23px;
+    font-size: 20px;
     font-weight: normal;
-    color: rgb(250, 250, 187);
+    color: #6C6C6C;
 }
 
-P {
-    margin: 0 0 20px;
-    font-size: 1.3em;
-    line-height: 1.5em;
-}
-
-.page-header {
-    margin-top: 0;
-    font-size: 45px;
-    line-height: 1.3em;
-    padding-bottom: 20px;
-    color: rgb(233, 233, 27);
-}
-
-.btn {
-    padding: 10px 30px 10px 30px;
-}
-
+/* Media queries */
 
 @media (max-width: 1159px) { 
+
+    .page-header {
+        font-size: 19px;
+    }
 
 }
 
 @media (max-width: 991px) {
+
+    .container {
+        width: auto;
+    }
+
+    .page-header {
+        margin: 0 0 10px 0;
+        font-size: 15px;
+    }
+
+    .info p {
+        font-size: 1.1em;
+        padding: 10px;
+    }
+
+}
+
+@media (max-width: 767px) {
+    
+    /* Sett kart tilbake til relative på mobil. */
     .angular-google-map-container {
         position: relative !important;
         height: 400px;
         width: 100%;
     }
 
-    .info {
+    .container, .row, .info {
         display: block;
+        height: auto !important;
     }
-
+    
     .page-header {
-        margin-top: 40px;
+        font-size: 20px;
     }
-}
-
-@media (max-width: 767px) {
+    .page-header span {
+        font-size: 2.5em;
+    }
+    label {
+        font-size: 17px;
+    }
 
 }

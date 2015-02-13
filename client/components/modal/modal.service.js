@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('trafikklysApp')
+angular.module('litteraturkartApp')
   .factory('Modal', function ($rootScope, $modal) {
     /**
      * Opens a modal

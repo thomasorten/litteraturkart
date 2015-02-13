@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('trafikklysApp')
+angular.module('litteraturkartApp')
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {

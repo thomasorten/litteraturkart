@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('trafikklysApp')
+angular.module('litteraturkartApp')
   .controller('NavbarCtrl', function ($scope, $location) {
     $scope.menu = [{
       'title': 'Home',
