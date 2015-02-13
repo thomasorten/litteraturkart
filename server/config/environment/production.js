@@ -15,9 +15,6 @@ module.exports = {
 
   // MongoDB connection options
   mongo: {
-    uri:    process.env.MONGOLAB_URI ||
-            process.env.MONGOHQ_URL ||
-            process.env.OPENSHIFT_MONGODB_DB_URL+process.env.OPENSHIFT_APP_NAME ||
-            'mongodb://localhost/litteraturkart'
+    uri: 'mongodb://litteratur:jmjk7jnmi5@ds037571.mongolab.com:37571/litteraturkart'
   }
 };
